@@ -23,25 +23,31 @@
                     <h2> Registration form</h2>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" > firstname:</label>
+                    <label class="control-label col-sm-2" > FirstName:</label>
                     <div class="col-sm-10">
-                            <input type="text" name="Firstname" ng-model="employee.firstname" class="form-control" required>
-                            <span ng-show="RegisterForm.Firstname.$invalid">The name is required.</span>
+                            <input type="text" name="FirstName" ng-model="employee.FirstName" class="form-control" required>
+                            <span ng-show="RegisterForm.FirstName.$invalid">The name is required.</span>
                  </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2">lastname:</label>
+                    <label class="control-label col-sm-2"> LastName :</label>
                     <div class="col-sm-10">
-                        <input type="text"name="lastname"class="form-control" ng-model="employee.lastname"
-                            required>
-                            <span ng-show="RegisterForm.lastname .$invalid">The name is required.</span>
+                        <input type="text"name=" LastName "class="form-control" ng-model="employee. LastName " class="form-control"required>
+                            <span ng-show="RegisterForm. LastName  .$invalid">The name is required.</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2">dateofbirth:</label>
+                    <label class="control-label col-sm-2">Dateofbrith:</label>
                     <div class="col-sm-10">
-                <input type="date" name="dateofbirth"action="/action_page.php"class="form-control"ng-model="employee.dateofbirth" min="1995-01-01"max="2020-12-31"required>
-                <span ng-show="RegisterForm.dateofbirthmin.$invalid">The name is required.</span>   
+                <input type="date" name="Dateofbrith"action="/action_page.php"class="form-control"ng-model="employee.Dateofbrith" min="1995-01-01"max="2020-12-31"required>
+                <span ng-show="RegisterForm.Dateofbrithmin.$invalid">The name is required.</span>   
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" >Gender:</label>
+                    <div class="col-sm-10">      
+              <select name="Gender" ng-model="employee.Gender"  class="form-control" ng-options="item for item in Gender"></select>
+
                     </div>
                 </div>
 
@@ -53,28 +59,25 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" >address:</label>
+                    <label class="control-label col-sm-2" >Address:</label>
                     <div class="col-sm-10">
-                        <input type="text" name="address1"class="form-control" ng-model="employee.address1"required></br>
-                            <span ng-show="RegisterForm.address1.$invalid">The name is required.</span>
-                            <input type="text" name="address2"class="form-control" ng-model="employee.address2"required></br>
-                           <span ng-show="RegisterForm.address2.$invalid">The name is required.</span>
-                       <input type="text"name="address3"class="form-control" ng-model="employee.address3"required>
-                           <span ng-show="RegisterForm.address3.$invalid">The name is required.</span>
+                        <input type="text" name="Address"class="form-control" ng-model="employee.Address"required></br>
+                            <span ng-show="RegisterForm.Address.$invalid">The name is required.</span>
+                            
                     </div>
                 </div>
 
+                
                 <div class="form-group">
-                    <label class="control-label col-sm-2" >gender:</label>
+                    <label class="control-label col-sm-2" >Country:</label>
                     <div class="col-sm-10">      
-              <select name="gender" ng-model="employee.gender"  class="form-control" ng-options="item for item in gender"></select>
-                  
+                        <select ng-model="employee.Country"class="form-control"ng-options="item for item in Country"></select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" >country:</label>
+                    <label class="control-label col-sm-2">State:</label>
                     <div class="col-sm-10">
-                        <select ng-model="employee.country"class="form-control"ng-options="item for item in country"></select>
+                            <select ng-model="employee.State"class="form-control"ng-options="item for item in State"></select>
                     </div>
                 </div>
                 <div class="form-group">n  
@@ -84,24 +87,24 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2">pincode:</label>
+                    <label class="control-label col-sm-2">Pincode:</label>
                     <div class="col-sm-10">
-                        <input type="numbers"name="pincode" class="form-control" ng-model="employee.pincode"required>
-                            <span ng-show="RegisterForm.pincode.$invalid">The name is required.</span>
+                        <input type="numbers"name="Pincode" class="form-control" ng-model="employee.Pincode"required>
+                            <span ng-show="RegisterForm.Pincode.$invalid">The name is required.</span>
 
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2">employee code:</label>
                     <div class="col-sm-10">
-                        <input type="numbers"name="employeecode"class="form-control" ng-model="employee.employeecode" required>
-                        <span ng-show="RegisterForm.employeecode.$invalid">The name is required.</span>
+                        <input type="numbers"name="employeeCode"class="form-control" ng-model="employee.employeeCode" required>
+                        <span ng-show="RegisterForm.employeeCode.$invalid">The name is required.</span>
 
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <input type="submit" class="btn btn-success"ng-disabled="RegisterForm.employee.$dirty && RegisterForm.employee.$invalid ||
-                    RegisterForm.$dirty && RegisterForm.$invalid"ng-click="submitform(employeedata)">
+                    RegisterForm.$dirty && RegisterForm.$invalid"ng-click="submitform(employee)">
                     <button type="reset" class="btn btn-danger"> reset</button>
                 </div>
 
@@ -113,36 +116,32 @@
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>Firstname</th>
-                          <th>Lastname</th>
-                          <th>dateofbirth</th>
+                          <th>FirstName</th>
+                          <th>LastName</th>
+                          <th>Dateofbrith</th>
+                          <th>Gender</th>
                           <th>PhoneNumber</th>
-                          <th>address1</th>
-                          <th>address2</th>
-                          <th>address3</th>
-                          <th>gender</th>
-                          <th>country</th>
-                          <th>state</th>
-                          <th>pincode</th>
-                          <th>employeecode</th>
+                          <th>Address</th>
+                          <th>Country</th>
+                          <th>State</th>
+                          <th>Pincode</th>
+                          <th>employeeCode</th>
                         </tr>
                       </thead>
-                      <tbody ng-repeat="item in employees">
+                      <tbody ng-repeat="item in content">
                           <tr>
 
                                 <td>{{$index+1}}</td>
-                              <td>{{item.firstname}}</td>
-                              <td>{{item.lastname}}</td>
-                              <td>{{item.dateofbirth}}</td>
-                              <td>{{item.phonenumber}}</td>
-                              <td>{{item.address1}}</td>
-                              <td>{{item.address2}}</td>
-                              <td>{{item.address3}}</td>
-                              <td>{{item.gender}}</td>
-                              <td>{{item.country}}</td>
-                              <td>{{item.state}}</td>
-                              <td>{{item.pincode}}</td>
-                              <td>{{item.employeecode}}</td>
+                              <td>{{item.FirstName}}</td>
+                              <td>{{item.LastName}}</td>
+                              <td>{{item.Dateofbrith}}</td>
+                              <td>{{item.Gender}}</td>
+                              <td>{{item.PhoneNumber}}</td>
+                              <td>{{item.Address}}</td>
+                              <td>{{item.Country}}</td>
+                              <td>{{item.State}}</td>
+                              <td>{{item.Pincode}}</td>
+                              <td>{{item.employeeCode}}</td>
                             
                           </tr>
                       </tbody>
