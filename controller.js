@@ -1,35 +1,77 @@
+
+
 var app = angular.module('myApp', []);
-app.controller('Democtrl', function ($scope) {
-  
+app.controller('Democtrl', function ($scope, $http) {
+
   $scope.employee = {
 
   };
-  $scope.employees=[];
-  $scope.gender = ["male", "female", "others"];
-  $scope.country = ["India", "Russia", "Canada", "China", "United States"];
-  $scope.state = ["Tamilnadu", "kerala", "karanataka"];
+  $scope.employees = [];
+  $scope.Gender = ["male", "female", "others"];
+  $scope.Country = ["India", "Russia", "Canada", "China", "United States"];
+  $scope.State = ["Tamilnadu", "kerala", "karanataka"];
+  var url = 'http://localhost:50167/api/values';
+  $scope.loadData = function (empobj) {
+
+    $http({
+      method: 'GET',
+      url: 'http://localhost:8087/api/values',
+      data:empobj,
+    })
+      .then(function (response) {
 
 
-  $scope.submitform = function () {
- var newItem={
-   'firstname':$scope.employee.firstname,
-   'lastname':$scope.employee.lastname,
-   'dateofbirth':$scope.employee.dateofbirth,
-   'phonenumber':$scope.employee.PhoneNumber, 
-   'gender':$scope.employee.gender, 
-   'address1':$scope.employee.address1,
-   'address2':$scope.employee.address2,
-   'address3':$scope.employee.address3,
-   'country':$scope.employee.country,
-   'state':$scope.employee.state,
-   'pincode':$scope.employee.pincode,
-   'employeecode':$scope.employee.employeecode,
+        $scope.content = response.data;
+        debugger;
+      });
+  }
+  $scope.loadData();
 
- };
- $scope.employees.push(newItem);
-}
+  $scope.submitform = function (empobj) {
+    debugger;
 
+    $http({
+      method: 'POST',
+      url: 'http://localhost:8087/api/values',
+      data: empobj,
+    })
+      .then(function (response) {
 
+        debugger;
+      },
+        function (response) { // optional
+          // failed
+        });
+
+  }
+  $scope.loadData = function (empobj) {
+
+    $http({
+      method: 'put',
+      url: 'http://localhost:50167/api/values/',
+      data: empobj,
+    })
+      .then(function (response) {
+
+        debugger;
+        $scope.content = response.data;
+      });
+  }
+  $scope.loadData();
+  $scope.loadData = function (empobj) {
+
+    $http({
+      method: 'delete',
+      url: 'http://localhost:50167/api/values/',
+      data: empobj,
+    })
+      .then(function (response) {
+        debugger;
+        $scope.content = response.data;
+
+      });
+  }
+  $scope.loadData();
 });
 
 
