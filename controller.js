@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-
-
+debugger;
 var app = angular.module('myApp', []);
 app.controller('Democtrl', function ($scope, $http) {
 
@@ -10,13 +8,14 @@ app.controller('Democtrl', function ($scope, $http) {
   $scope.employees = [];
   $scope.Gender = ["male", "female", "others"];
   $scope.Country = ["India", "Russia", "Canada", "China", "United States"];
-  $scope.State = ["Tamilnadu", "kerala", "karanataka"];
-  var url = 'http://localhost:50167/api/values';
+  $scope.State= ["Tamilnadu", "kerala", "karanataka"];
+
+  var url = "http://localhost:8087/api/values";
   $scope.loadData = function (empobj) {
 
     $http({
       method: 'GET',
-      url: 'http://localhost:8087/api/values',
+      url: 'url',
       data:empobj,
     })
       .then(function (response) {
@@ -28,95 +27,68 @@ app.controller('Democtrl', function ($scope, $http) {
   }
   $scope.loadData();
 
-  $scope.submitform = function (empobj) {
+  $scope.submitform = function (empobj){
     debugger;
+    $scope.createUser = function() {
 
+  debugger;
     $http({
       method: 'POST',
-      url: 'http://localhost:8087/api/values',
+      url: 'url',
       data: empobj,
     })
       .then(function (response) {
-
-        debugger;
-      },
-        function (response) { // optional
-          // failed
+      debugger;
+      $scope.content = response.data;
+       
         });
 
-  }
-  $scope.loadData = function (empobj) {
+  } 
+};
+$scope.updateUser = function() {
 
-    $http({
-      method: 'put',
-      url: 'http://localhost:50167/api/values/',
-      data: empobj,
-    })
-      .then(function (response) {
-
-        debugger;
-        $scope.content = response.data;
-      });
-  }
-  $scope.loadData();
-  $scope.loadData = function (empobj) {
-
-    $http({
-      method: 'delete',
-      url: 'http://localhost:50167/api/values/',
-      data: empobj,
-    })
-      .then(function (response) {
-        debugger;
-        $scope.content = response.data;
-
-      });
-  }
-  $scope.loadData();
-});
-
-
-=======
-var app = angular.module('myApp', []);
-app.controller('Democtrl', function ($scope,$http ) {
   
-  $scope.employee = {
+  $http({
 
-  };
-  $scope.employees=[];
-  $scope.Gender = ["male", "female", "others"];
-  $scope.Country = ["India", "Russia", "Canada", "China", "United States"];
-  $scope.State = ["Tamilnadu", "kerala", "karanataka"];
+    method: 'PUT',
+    url: 'url' + $scope.content.id,
+    data: empobj,
 
-$scope.loadData=function(){
-  $http.get("http://localhost:50167/api/values")
-  .then(function(response) {
-    debugger;
-      $scope.content = response.data;
-         
+  }).then(function successCallback(response) {
+
+    alert("User has updated Successfully")
+
+  }, function errorCallback(response) {
+
+    alert("Error. while updating user Try Again!");
+
   });
-}
 
-$scope.loadData();
-  $scope.submitform = function (empobj) {
+};
+$scope.deleteUser = function(user) {
 
-    $http. Post({
-      url: 'http://localhost:50167/api/values',
-      
-      
-      data: empobj
-  })
-  .then(function(response) {
-          debugger;
-  }, 
-  function(response) { // optional
-          // failed
+  $http({
+
+    method: 'DELETE',
+    url: 'url' +$scope.content.id,
+
+
+  }).then(function successCallback(response) {
+
+    alert("User has deleted Successfully");
+    var Employees = $scope.content.EmployeeOf(content);
+    $scope.content.splice(employee, 1);
+
+  }, function errorCallback(response) {
+
+    alert("Error. while deleting user Try Again!");
+
   });
- 
-}
+
+};
+
 
 
 });
 
 
->>>>>>> 342de5e72ff97f6bf355553b46dc9d3d22a2f10c
